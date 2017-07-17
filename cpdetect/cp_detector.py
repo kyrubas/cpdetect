@@ -160,6 +160,7 @@ class Detector(object):
             logger().info('Running cp detector on traj ' + str(k))
             logger().info('---------------------------------')
             self.change_points['traj_%s' %str(k)] = pd.DataFrame(columns=['ts', 'log_odds', 'start_end'])
+            self.change_points['traj_%s' %str(k)]['ts'] = self.change_points['traj_%s' %str(k)]['ts'].astype(int)
             obs = self._observations[k]
             self._split(obs, 0, self.observation_lengths[k], k)
             logger().info('Generating step fucntion')
